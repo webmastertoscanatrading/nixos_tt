@@ -14,9 +14,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -88,10 +87,9 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.stefano = {
     isNormalUser = true;
-    description = "stefano";
+    description = "Stefano";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # put user programs here
     ];
   };
 
@@ -109,16 +107,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   micro # editor from terminal
-   git #version control
-   google-chrome # browser
-   firefox # browser
-   vscode # gui editor
-   pdfarranger # pdf editor
-   anydesk # remote control
+  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  micro # terminal editor nano alternative
+  wget # Tool for retrieving files using HTTP, HTTPS, and FTP
+  google-chrome # browser
+  firefox # browser personal
+  git # version control
+  vscode # gui editor
+  pdfarranger # pdf editor
+  anydesk # remote control
   ];
 
-  # Set default editor to vim
+  # Set default editor to micro
   environment.variables.EDITOR = "micro";
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,6 +146,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
