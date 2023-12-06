@@ -35,3 +35,4 @@ insertehome menager in inputs and ouputs on flake.nix file
 ## Use home manger
 
 Edit the file home .nix to configure your applications and configuration at user level. Than run the following command to sync the state of the system with the file: `home-manager switch --flake .`
+If you recive an error please be sure git treee is cleaned so that all files are tracked `git add .`
