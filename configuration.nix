@@ -107,15 +107,26 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  micro # terminal editor nano alternative
-  wget # Tool for retrieving files using HTTP, HTTPS, and FTP
   google-chrome # browser
   firefox # browser personal
-  git # version control
   vscode # gui editor
   pdfarranger # pdf editor
   anydesk # remote control
+  git # version control
+  # terminal
+  wezterm # terminal
+  oh-my-posh # prompt theme
+  nerdfonts # fonts for prompt
+  tmux # terminal multiplexer
+  micro # terminal editor nano alternative
+  wget # Tool for retrieving files using HTTP, HTTPS, and FTP
+  curl # transferring files with URL syntax
+  neovim # vim fork focused on extensibility
+  # lazyvim
+  lazygit
+  libstdcxx5
+  ripgrep
+  fd
   ];
 
   # Set default editor to micro

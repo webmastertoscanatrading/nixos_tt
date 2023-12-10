@@ -63,7 +63,18 @@
   #  /etc/profiles/per-user/stefano/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+   EDITOR = "micro";
+  };
+
+  # bash
+  programs.bash = {
+    enable = true;
+  };
+
+  # prompt theme with oh-my-posh
+  programs.oh-my-posh = {
+    enable = true;
+    enableBashIntegration = true;
   };
 
   # Let Home Manager install and manage itself.
