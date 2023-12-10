@@ -113,6 +113,7 @@
   pdfarranger # pdf editor
   anydesk # remote control
   git # version control
+  git-credential-manager # gestore credenziali per github
   # terminal
   wezterm # terminal
   oh-my-posh # prompt theme
