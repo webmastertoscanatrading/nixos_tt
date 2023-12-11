@@ -124,10 +124,13 @@
   curl # transferring files with URL syntax
   neovim # vim fork focused on extensibility
   # lazyvim
-  lazygit
-  libstdcxx5
-  ripgrep
-  fd
+  libgcc # c compiler??
+  libstdcxx5 # another c compiler
+  gccgo13 # c compiler
+  lazygit # git from terminal
+  ripgrep # search
+  fd # fuzzy search?
+  wl-clipboard
   ];
 
   # Set default editor to micro
