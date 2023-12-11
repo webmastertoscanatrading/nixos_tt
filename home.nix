@@ -75,6 +75,7 @@
   programs.oh-my-posh = {
     enable = true;
     enableBashIntegration = true;
+    useTheme = "M365Princess";
   };
 
   # Let Home Manager install and manage itself.

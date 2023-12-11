@@ -133,6 +133,12 @@
   wl-clipboard
   ];
 
+  nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 30d";
+};
+
   # Set default editor to micro
   environment.variables.EDITOR = "micro";
 

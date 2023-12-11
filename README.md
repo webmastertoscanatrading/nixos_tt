@@ -42,3 +42,12 @@ If you recive an error please be sure git treee is cleaned so that all files are
 To update the system, navigate to the dotfile directory and run `nix flake update`
 This command will upate the .lock files so that all the switch command will use the updates packages versions. To actual update the system run `sudo nixos-rebuild switch --flake .`
 To update the user config use `home-manager switch --flake .`
+
+## Maintenance
+
+With the following command:
+`sudo nix-collect-garbage -d`
+Ol generations shoul be deleted, only the last one.
+To check:
+`sudo nix-env -p /nix/var/nix/profiles/system --list-generations`
+the command should lists exactly 1 configuration if done after the delete old gen command.
