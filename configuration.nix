@@ -114,8 +114,8 @@
   anydesk # remote control
   git # version control
   git-credential-manager # gestore credenziali per github
+  nodejs_21 # nodejs
   # terminal
-  wezterm # terminal
   oh-my-posh # prompt theme
   nerdfonts # fonts for prompt
   tmux # terminal multiplexer
@@ -124,13 +124,12 @@
   curl # transferring files with URL syntax
   neovim # vim fork focused on extensibility
   # lazyvim
-  libgcc # c compiler??
   libstdcxx5 # another c compiler
   gccgo13 # c compiler
   lazygit # git from terminal
   ripgrep # search
   fd # fuzzy search?
-  wl-clipboard
+  wl-clipboard # copy and paste utility
   ];
 
   nix.gc = {
