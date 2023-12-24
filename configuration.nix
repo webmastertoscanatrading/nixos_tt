@@ -107,36 +107,37 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  google-chrome # browser
-  firefox # browser personal
-  vscode # gui editor
-  pdfarranger # pdf editor
-  anydesk # remote control
-  git # version control
-  git-credential-manager # gestore credenziali per github
-  nodejs_21 # nodejs
-  # terminal
-  oh-my-posh # prompt theme
-  nerdfonts # fonts for prompt
-  tmux # terminal multiplexer
-  micro # terminal editor nano alternative
-  wget # Tool for retrieving files using HTTP, HTTPS, and FTP
-  curl # transferring files with URL syntax
-  neovim # vim fork focused on extensibility
-  # lazyvim
-  libstdcxx5 # another c compiler
-  gccgo13 # c compiler
-  lazygit # git from terminal
-  ripgrep # search
-  fd # fuzzy search?
-  wl-clipboard # copy and paste utility
+    google-chrome # browser
+    firefox # browser personal
+    vscode # gui editor
+    pdfarranger # pdf editor
+    anydesk # remote control
+    git # version control
+    git-credential-manager # gestore credenziali per github
+    nodejs_21 # nodejs
+    # terminal
+    oh-my-posh # prompt theme
+    nerdfonts # fonts for prompt
+    tmux # terminal multiplexer
+    micro # terminal editor nano alternative
+    wget # Tool for retrieving files using HTTP, HTTPS, and FTP
+    curl # transferring files with URL syntax
+    neovim # vim fork focused on extensibility
+    # lazyvim
+    libstdcxx5 # another c compiler
+    gccgo13 # c compiler
+    lazygit # git from terminal
+    ripgrep # search
+    fd # fuzzy search?
+    wl-clipboard # copy and paste utility
   ];
 
+  # maintenance
   nix.gc = {
-  automatic = true;
-  dates = "weekly";
-  options = "--delete-older-than 30d";
-};
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Set default editor to micro
   environment.variables.EDITOR = "micro";

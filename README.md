@@ -1,6 +1,6 @@
 # My nixox dotfiles readme
 
-Here is my dotfiles for my xixos machine. The setup is taken from LibrePhoenix:
+Here is my dotfiles for my xixos machine. The setup instructions are from LibrePhoenix:
 
 - [Flake](https://www.youtube.com/watch?v=ACybVzRvDhs&list=FLximN2Dc_dZcDTfC7BNaVUw&index=2&t=8s)
 - [Home-manger stand alone configuration](https://www.youtube.com/watch?v=IiyBeR-Guqw&list=FLximN2Dc_dZcDTfC7BNaVUw&index=1)
@@ -26,7 +26,7 @@ From now we have acees to flakes commands and we can:
 
 ## Enable home-manager
 
-For unstable channel excute theese commands (taken from home manager official manual):
+For unstable channel execute theese commands (taken from home manager official manual):
 
 - `nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager`
 - `nix-channel --update`
@@ -36,7 +36,7 @@ For unstable channel excute theese commands (taken from home manager official ma
 
 ## integrate Home manager with flake in dotfile directory
 
-Inserte home menager in inputs and ouputs on flake.nix file
+Inserte home manager in inputs and ouputs on flake.nix file
 
 ## Use home manger
 
