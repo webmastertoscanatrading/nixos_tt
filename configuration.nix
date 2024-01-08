@@ -123,6 +123,7 @@
     wget # Tool for retrieving files using HTTP, HTTPS, and FTP
     curl # transferring files with URL syntax
     neovim # vim fork focused on extensibility
+    anydesk
     # lazyvim
     libstdcxx5 # another c compiler
     gccgo13 # c compiler
