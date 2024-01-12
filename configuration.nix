@@ -35,7 +35,7 @@
     LC_NAME = "it_IT.UTF-8";
     LC_NUMERIC = "it_IT.UTF-8";
     LC_PAPER = "it_IT.UTF-8";
-    LC_TELEPHONE = "it_IT.UTF-8";vscodium
+    LC_TELEPHONE = "it_IT.UTF-8";
     LC_TIME = "it_IT.UTF-8";
   };
 
