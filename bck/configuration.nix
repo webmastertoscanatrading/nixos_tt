@@ -115,6 +115,7 @@
     git # version control
     git-credential-manager # gestore credenziali per github
     nodejs_21 # nodejs
+    etcher
     # terminal
     oh-my-posh # prompt theme
     nerdfonts # fonts for prompt
