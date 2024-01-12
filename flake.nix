@@ -23,15 +23,14 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
 	    specialArgs = { inherit system; inherit inputs; inherit username; inherit hostname; };
-	    modules = [ ./configuration.nix
-          home-manager.nixosModules.home-manager {
-	        home-manager.extraSpecialArgs = { inherit username; };
-	        home-manager.useGlobalPkgs = true;
-	        home-manager.useUserPackages = true;
-	        home-manager.users.${username} = import ./home.nix;
-	      }
-	    ];
+	    modules = [ ./configuration.nix ];
       };
     };
+          homeConfigurations = {
+        stefano = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [./home.nix];
+        };
+      };
   };
 }
