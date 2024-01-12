@@ -54,7 +54,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim wget curl
+    neovim
+    micro
+    git
+    wget
+    curl
   ];
 
   fonts.packages = with pkgs; [
