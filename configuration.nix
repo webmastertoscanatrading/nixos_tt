@@ -35,7 +35,7 @@
     LC_NAME = "it_IT.UTF-8";
     LC_NUMERIC = "it_IT.UTF-8";
     LC_PAPER = "it_IT.UTF-8";
-    LC_TELEPHONE = "it_IT.UTF-8";
+    LC_TELEPHONE = "it_IT.UTF-8";vscodium
     LC_TIME = "it_IT.UTF-8";
   };
 
@@ -54,7 +54,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nvim wget curl
+    neovim wget curl
   ];
 
   fonts.packages = with pkgs; [
@@ -98,7 +98,7 @@
     libinput.enable = true;
     # videoDrivers = [ "amdgpu" ];
     displayManager.gdm = {
-      enable = true;
+      enable = true;vscodium
       wayland = true;
     };
   };
