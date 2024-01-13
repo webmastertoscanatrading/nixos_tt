@@ -1,48 +1,80 @@
-# NixOS config based on ZaneyOS
+# My nixox dotfiles readme
 
-ZaneyOS is a way of reproducing my configuration on any NixOS system. This includes the wallpaper, scripts, applications, config files, and more. _Please remember to change username and hostname in flake.nix._
+Here is my dotfiles for my xixos machine. The setup instructions are from LibrePhoenix:
 
-## What Is NixOS
+- [Flake](https://www.youtube.com/watch?v=ACybVzRvDhs&list=FLximN2Dc_dZcDTfC7BNaVUw&index=2&t=8s)
+- [Home-manger stand alone configuration](https://www.youtube.com/watch?v=IiyBeR-Guqw&list=FLximN2Dc_dZcDTfC7BNaVUw&index=1)
 
-NixOS is a Linux distribution known for its unique approach to package management and system configuration. It uses the Nix package manager, which is based on a purely functional approach to managing software and system configurations.
+## Enable flakes in nixos
 
-In NixOS, the entire operating system configuration is described declaratively in a configuration file, allowing for reproducibility and easy rollbacks. This means that changes to the system can be tracked and reversed, making it robust and reliable for system administrators and developers.
+Basically to anable flakes we need to add the following line to the /etc/configuration.nix:
 
-## Why Choose NixOS
+```
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+```
 
-Choosing NixOS often depends on specific needs and preferences. Here are some reasons why people opt for NixOS:
+Once done just rebuild the system for the modification to take affect:
 
-### Declarative Configuration
+```
+sudo nixos-rebuild switch
+```
 
-NixOS employs a declarative approach to system configuration. This means the entire system configuration is defined in a single file, making it reproducible and easier to manage. Changes are tracked and can be rolled back if needed.
+From now we have acees to flakes commands and we can:
 
-### Functional Package Management
+- update nix flake with `nix flake update`
+- rebuild the system with the repository stated in flake.nix with `sudo nixos-rebuild switch --flake .`
 
-The Nix package manager ensures that each package and its dependencies are isolated and managed separately. This prevents conflicts between different versions of software and enables easy rollbacks to previous versions.
+## Enable home-manager
 
-### Reproducibility
+For unstable channel execute theese commands (taken from home manager official manual):
 
-NixOS allows for consistent and reproducible environments, critical in development, testing, and deployment scenarios. It's particularly valuable in DevOps and CI/CD pipelines where consistent environments are essential.
+- `nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager`
+- `nix-channel --update`
+  to update and pool the channel but for the actual installation run:
+- `nix-shell '<home-manager>' -A install`
+  If you recive an error like 'file home-manager was not found in the Nix search path' just log out and log in again and run the command again.
 
-### Multiple Environments and Rollbacks
+## integrate Home manager with flake in dotfile directory
 
-With NixOS, it's possible to have multiple versions of the same software installed simultaneously without conflicts. This flexibility is especially useful for developers or those requiring different versions of software for various projects.
+Inserte home manager in inputs and ouputs on flake.nix file
 
-### Community and Customization
+## Use home manger
 
-NixOS has an active community that contributes to its growth, sharing configurations, and offering support. Its customizable nature allows users to tailor their systems to their needs.
+Edit the file home .nix to configure your applications and configuration at user level. Than run the following command to sync the state of the system with the file: `home-manager switch --flake .`
+If you recive an error please be sure git treee is cleaned so that all files are tracked `git add . `
 
-# Steps To Reproduce My System
+## Summary
 
-- Clone this repo
-- Change username and hostname in flake.nix
-- Replace your hardware-configuration.nix
-- Enable flakes in your default configuration.nix
-- Rebuild your system
-- Then go into repo folder and run this command:
+To update the system, navigate to the dotfile directory and run
+
+```
+nix flake update
+```
+
+This command will upate the .lock files so that all the switch command will use the updates packages versions. To actual update the system run
 
 ```
 sudo nixos-rebuild switch --flake .
 ```
 
-Hope you enjoy!
+To update the user config use
+
+```
+home-manager switch --flake .
+```
+
+## Maintenance
+
+We can delete all generations (except the last one) with the following command:
+
+```
+sudo nix-collect-garbage -d
+```
+
+To check the result use the following:
+
+```
+sudo nix-env -p /nix/var/nix/profiles/system --list-generations
+```
+
+the command lists all the available configurations.
