@@ -113,7 +113,6 @@
     pdfarranger # pdf editor
     anydesk # remote control
     # terminal
-    neovim # vim fork focused on extensibility
     micro # terminal editor nano alternative
     git # version control
     wget # Tool for retrieving files using HTTP, HTTPS, and FTP
@@ -121,13 +120,19 @@
     nodejs # nodejs
     oh-my-posh # prompt theme
     nerdfonts # fonts for prompt
+    # nvim
+    neovim # vim fork focused on extensibility
+    unzip # An extraction utility for archives compressed in .zip format
+    gccgo13 # c library
+    fd # a simple alternative to find
+    wl-clipboard # copy paste utility for terminal in wayland
   ];
 
   # maintenance
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
 
   # Set default editor to micro
