@@ -10,12 +10,13 @@
       ./hardware-configuration.nix
     ];
 
-  # Enable Flakes and the new command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
+  
+  # enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -48,9 +49,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -85,58 +86,43 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.stefano = {
+  users.users.pcbanco = {
     isNormalUser = true;
-    description = "Stefano";
+    description = "PCBANCO";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    ];
+      firefox
+      kate
+      thunderbird
+      anydesk
+      google-chrome
+      opera
+      inkscape
+      vscode
+      libreoffice
+      gimp
+      microsoft-edge 
+      audacity
+      vlc
+      pdfarranger
+      micro
+      git
+      unzip
+      unrar
+      obs-studio
+ ];
   };
-
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "stefano";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
+
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    google-chrome # browser
-    firefox # browser personal
-    vscodium # gui editor
-    pdfarranger # pdf editor
-    anydesk # remote control
-    # terminal
-    micro # terminal editor nano alternative
-    git # version control
-    wget # Tool for retrieving files using HTTP, HTTPS, and FTP
-    curl # transferring files with URL syntax
-    nodejs # nodejs
-    oh-my-posh # prompt theme
-    nerdfonts # fonts for prompt
-    # nvim
-    neovim # vim fork focused on extensibility
-    unzip # An extraction utility for archives compressed in .zip format
-    gccgo13 # c library
-    fd # a simple alternative to find
-    wl-clipboard # copy paste utility for terminal in wayland
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
   ];
-
-  # maintenance
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  # Set default editor to micro
-  environment.variables.EDITOR = "micro";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
