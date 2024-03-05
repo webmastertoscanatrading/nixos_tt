@@ -21,7 +21,7 @@
         };
       };
       homeConfigurations = {
-        stefano = home-manager.lib.homeManagerConfiguration {
+        pcbanco = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [./home.nix];
         };
