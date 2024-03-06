@@ -58,6 +58,11 @@
     layout = "it";
     xkbVariant = "";
   };
+  
+  #configurazione Virt-Manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
 
   # Configure console keymap
   console.keyMap = "it";
@@ -110,6 +115,9 @@
       unzip
       unrar
       obs-studio
+      obsidian
+      virt-manager
+  
  ];
   };
 
