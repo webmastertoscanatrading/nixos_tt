@@ -117,7 +117,7 @@
       obs-studio
       obsidian
       virt-manager
-  
+      poedit
  ];
   };
 
